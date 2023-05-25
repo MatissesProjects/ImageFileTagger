@@ -81,6 +81,10 @@ li {
     padding: 10px;
 }
 
+#selectedImage {
+    max-width: 500px;
+}
+
 footer {
     width: 100%;
     display: flex;

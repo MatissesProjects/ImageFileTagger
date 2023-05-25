@@ -117,7 +117,8 @@ def saveToDisk():
 @app.route('/api/refresh_images', methods=['GET'])
 def refresh_images():
     images_dir = os.path.join(app.root_path, 'images')
-    image_filenames = os.listdir(images_dir)
+    # image_filenames = os.listdir(images_dir)
+    image_filenames = [f for f in os.listdir(images_dir) if f != '.gitkeep']
 
     # Get current image names in the database
     current_db_images = {img.name for img in Image.query.all()}
@@ -159,6 +160,8 @@ if __name__ == '__main__':
         # Populate the Image table with images from the /images directory
         images_dir = os.path.join(app.root_path, 'images')
         for filename in os.listdir(images_dir):
+            if filename == '.gitkeep':   # Ignore .gitkeep file
+                continue
             if not Image.query.filter_by(name=filename).first():
                 new_image = Image(name=filename)
                 db.session.add(new_image)
