@@ -4,6 +4,7 @@ const nextButton = document.getElementById('nextButton');
 const tagInput = document.getElementById('tagInput');
 const addTagButton = document.getElementById('addTagButton');
 const allTags = document.getElementById('allTags');
+let suggestions = document.getElementById("suggestions");
 
 async function fetchImages() {
     const response = await fetch('http://localhost:5000/api/images');
@@ -188,7 +189,43 @@ refreshButton.addEventListener('click', async function() {
     }
 });
 
-
+tagInput.addEventListener("input", function () {
+    let value = tagInput.value;
+    if (!value) {
+        suggestions.innerHTML = '';
+        return;
+    }
+    fetch(`/api/suggest_tags?prefix=${value}`)
+    .then(response => response.json())
+    .then(data => {
+        suggestions.innerHTML = '';
+        if (data.length > 0) {
+            suggestions.style.display = 'block';  // show suggestions
+        } else {
+            suggestions.style.display = 'none';  // hide suggestions
+        }
+        for (let i = 0; i < data.length; i++) {
+            let li = document.createElement("li");
+            li.textContent = data[i];
+            li.addEventListener("click", function () {
+                tagInput.value = data[i];
+                suggestions.innerHTML = '';
+                suggestions.style.display = 'none';  // hide suggestions
+                tagInput.value = data[i];
+                document.getElementById('suggestions').innerHTML = '';
+                document.getElementById('suggestions').style.display = 'none';  // hide suggestions
+                document.getElementById('tagInput').focus();  // focus the text box
+            });
+            suggestions.appendChild(li);
+        }
+    });
+});
 
 fetchImages();
 fetchAllTags();
+
+document.getElementById('tagInput').addEventListener('input', function() {
+    if (this.value === '') {
+        document.getElementById('suggestions').style.display = 'none';  // hide suggestions
+    }
+});

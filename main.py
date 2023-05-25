@@ -145,6 +145,15 @@ def refresh_images():
 
     return jsonify(list(current_dir_images))
 
+@app.route('/api/suggest_tags', methods=['GET'])
+def suggest_tags():
+    prefix = request.args.get('prefix')
+    if not prefix:
+        return jsonify([])
+
+    # adjust the line below to suit your database and ORM
+    tags = Tag.query.filter(Tag.name.startswith(prefix)).all()
+    return jsonify([tag.name for tag in tags])
 
 @app.route('/style.css')
 def style():

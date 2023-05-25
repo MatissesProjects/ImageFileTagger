@@ -58,7 +58,30 @@ li {
 
 #addTagBlock {
     margin-bottom: 50px;
-}
+    position: relative;
+  }
+  
+  .suggestions {
+    position: absolute;
+    width: 100%;
+    max-height: 150px;
+    overflow-y: auto;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color: #2e2e2e;
+    z-index: 10;
+    display: none; /* Initially hidden */
+  }
+  
+  .suggestions li {
+    padding: 10px;
+    cursor: pointer;
+  }
+  
+  .suggestions li:hover {
+    background-color: #ccc;
+  }
+  
 
 #tagsContainer {
     max-width: 300px;
