@@ -1,0 +1,88 @@
+:root {
+    --background-color: #222222;
+    --text-color: #ffffff;
+}
+
+body {
+    background-color: var(--background-color);
+    color: var(--text-color);
+}
+
+button {
+    background-color: #415e50;
+    color: #fff;
+    border: none;
+    margin: 2px;
+}
+
+input {
+    background-color: #333;
+    color: #fff;
+    border: none;
+}
+
+li {
+    display: inline-block;
+    cursor: pointer;
+}
+
+#imageSelect{
+    width: 375px;
+}  
+
+#imageTaggingBlock {
+    display: flex;
+    justify-content: space-between;
+    padding: 1em;
+}
+
+#image-column {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1em;
+}
+
+#tags-section {
+    display: flex;
+    flex-direction: column;
+    gap: 1em;
+}
+
+#allTags {
+    max-height: 500px;
+    overflow-y: auto;
+    padding: 0;
+    list-style-type: none;
+}
+
+#addTagBlock {
+    margin-bottom: 50px;
+}
+
+#tagsContainer {
+    max-width: 300px;
+}
+
+#downloadButton {
+    width: 75%;
+    text-align: center;
+}
+
+#imageDivBlock, #addTagDivBlock {
+    flex: 25%;
+    box-sizing: border-box;
+    padding: 10px;
+}
+
+#allTagsDivBlock {
+    flex: 50%;
+    box-sizing: border-box;
+    padding: 10px;
+}
+
+footer {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}

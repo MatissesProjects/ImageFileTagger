@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Image Tagging App</title>
+    <link rel="stylesheet" type="text/css" href="style.css"> 
+  </head>
+  <body>
+    <div id="imageTaggingBlock">
+      <div id="imageDivBlock">
+          <h2>Image</h2>
+          <img id="selectedImage" src="" alt="Selected image" />
+          <div>
+            <button id="previousButton">Previous</button>
+            <select id="imageSelect"></select>
+            <button id="nextButton">Next</button>
+          </div>
+      </div>
+
+      <div id="addTagDivBlock">
+        <h2>Tags for the selected Image</h2>
+        <div id="addTagBlock">
+          <input id="tagInput" type="text" />
+          <button id="addTagButton">Add Tag</button>
+        </div>
+        <div id="tagsContainer">
+        </div>
+      </div>
+
+      <div id="allTagsDivBlock">
+        <h2>All Tags:</h2>
+        <ul id="allTags"></ul>
+      </div>
+    </div>
+    <footer>
+      <button id="refreshButton">Refresh Images</button>
+      <button id="downloadButton">Export Images With Tags</button>
+    </footer>
+    <script src="static/app.js"></script>
+  </body>
+</html>
